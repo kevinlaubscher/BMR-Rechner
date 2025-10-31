@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BMR Rechner | Fit on Time</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="/logo.png" alt="Fit on Time Logo" class="logo" />
+      <span class="brand-name"></span>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <h1>BRM Rechner</h1>
+
+    <section class="card">
+      <h2>Angaben</h2>
+      <form id="bmr-form" class="grid" novalidate>
+        <div class="field" style="grid-column: 1 / -1;">
+          <label>Geschlecht</label>
+          <div class="radio-pills" role="radiogroup" aria-label="Geschlecht wählen">
+            <label class="radio-pill">
+              <input type="radio" name="sex" value="f" required />
+              <span>Frau</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="sex" value="m" required />
+              <span>Mann</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="age">Alter (Jahre)</label>
+          <input id="age" name="age" type="number" inputmode="numeric" min="10" max="120" required placeholder="z. B. 30" />
+        </div>
+
+        <div class="field">
+          <label for="height">Grösse (cm)</label>
+          <input id="height" name="height" type="number" inputmode="numeric" min="120" max="230" required placeholder="z. B. 175" />
+        </div>
+
+        <div class="field">
+          <label for="weight">Gewicht (kg)</label>
+          <input id="weight" name="weight" type="number" inputmode="decimal" min="30" max="300" step="0.1" required placeholder="z. B. 70" />
+        </div>
+
+        <div class="actions" style="grid-column: 1 / -1;">
+          <button type="submit" class="btn" id="calc-btn">Berechnen</button>
+          <button type="reset" class="btn ghost">Zurücksetzen</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" id="result-card" hidden>
+      <h2>Ergebnis</h2>
+      <div class="result" id="result"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 BMR-Flow</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

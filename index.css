@@ -1,0 +1,212 @@
+/* =======================================
+   Fit on Time – BMR Rechner (Eigenständiges CSS)
+   ======================================= */
+
+/* Design Tokens */
+:root {
+  --primary: orange;
+  --primary-dark: orange;
+  --bg: #f4f7fb;
+  --card-bg: #ffffff;
+  --text: #1e1e1e;
+  --muted: #6c757d;
+  --ring: orange;
+  --danger: #e53935;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset und Grundlayout */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navigation */
+.navbar {
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .8rem 2rem;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.logo { height: 50px; width: auto; display: block; }
+.brand-name { font-weight: 700; font-size: 1.1rem; }
+.nav-links { list-style: none; display: flex; gap: 1.5rem; }
+.nav-links a {
+  color: #fff; text-decoration: none; font-weight: 500; transition: opacity .2s;
+}
+.nav-links a:hover { opacity: .85; }
+.nav-links a.active { text-decoration: underline; }
+.nav-links a.logout { color: var(--ring); }
+.nav-links a.logout:hover { color: #fff; }
+.logout {
+  background: #fff; color: var(--primary);
+  padding: 6px 14px; border-radius: 8px; font-weight: 600;
+}
+.logout:hover { background: var(--primary-dark); color: #fff; }
+
+/* Hauptbereich */
+.main-content { flex: 1; padding: 2rem; }
+.main-content h1 { margin-bottom: .5rem; font-size: 1.8rem; color: orange;}
+.main-content p { color: var(--muted); margin-bottom: 1.5rem; }
+
+/* Kartencontainer */
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.2rem;
+}
+.card h2 { color: var(--primary); margin-bottom: .8rem; }
+
+/* Form Gitterlayout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+.field { display: flex; flex-direction: column; gap: .4rem; }
+label, .label-row { font-weight: 600; font-size: .95rem; }
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="search"] {
+  width: 100%;
+  padding: .7rem .85rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow .15s, border-color .15s;
+}
+input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgba(0, 158, 227, .18);
+}
+
+/* Aktionen */
+.actions { display: flex; gap: .6rem; }
+.btn {
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .05s, box-shadow .2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.btn:hover { background: var(--primary-dark); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost { background: #eef6fb; color: var(--primary); }
+.btn.ghost:hover { background: #d9eef9; }
+.btn.danger { background: var(--danger); }
+.btn.danger:hover { filter: brightness(.95); }
+#calc-btn { min-width: 160px; }
+#bmr-form button.btn { font-size: .95rem; }
+
+/* Radio Pills für Geschlecht */
+.radio-pills { display: flex; gap: .5rem; flex-wrap: wrap; }
+.radio-pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: #eef6fb; color: var(--primary);
+  border: 1px solid #d9eef9; border-radius: 999px;
+  padding: .35rem .7rem; cursor: pointer; user-select: none;
+  font-weight: 700; line-height: 1; transition: all .15s ease-in-out;
+}
+.radio-pill input { display: none; }
+.radio-pill:has(input:checked) {
+  background: var(--primary); color: #fff; border-color: var(--primary);
+}
+.radio-pill:focus-within {
+  box-shadow: 0 0 0 4px rgba(0, 158, 227, .18);
+}
+
+/* Ergebnisbereich */
+.result {
+  margin-top: 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  animation: fadeIn .3s ease-in-out both;
+}
+.result h3 { margin-bottom: .4rem; color: var(--primary); }
+.result .headline {
+  font-size: 1.25rem; font-weight: 800; margin-bottom: .6rem;
+}
+.result .headline.small { font-size: 1.15rem; }
+
+/* Makronährstoff Grid */
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .6rem;
+  margin-top: .6rem;
+}
+.macro-grid > div {
+  background: #eef6fb;
+  border-radius: 10px;
+  padding: .6rem .8rem;
+  border: 1px solid #d9eef9;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.03);
+}
+.macro-grid > div > div:first-child {
+  font-weight: 700; color: var(--primary-dark);
+}
+.macro-grid > div > div:last-child {
+  font-size: .95rem; color: var(--text);
+}
+
+/* Typo Hilfen */
+.muted { color: var(--muted); font-size: .95rem; }
+
+/* Fussbereich */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #e9ecef;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* A11y Utility */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+
+/* Animationen */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsives Verhalten */
+@media (max-width: 800px) {
+  .navbar { padding: .7rem 1rem; }
+  .nav-links { gap: 1rem; }
+}
+@media (max-width: 600px) {
+  .main-content { padding: 1.2rem; }
+  .macro-grid { grid-template-columns: 1fr; }
+}
