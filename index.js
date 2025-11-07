@@ -6,7 +6,7 @@ const resultEl = document.getElementById('result');
 
 // Vorgegebene Stufen
 const PLANS = [
-  { kcal: 1300, carb_pct: 35, protein_pct: 30, fat_pct: 30 },
+  { kcal: 1300, carb_pct: 35, protein_pct: 30, fat_pct: 35 },
   { kcal: 1500, carb_pct: 37, protein_pct: 27, fat_pct: 36 },
   { kcal: 1700, carb_pct: 38, protein_pct: 28, fat_pct: 34 },
   { kcal: 1900, carb_pct: 42, protein_pct: 25, fat_pct: 33 },
